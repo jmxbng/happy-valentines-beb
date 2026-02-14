@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="heart-container"></div>
+
+    <div id="lock-screen">
+        <div class="glass-card">
+            <div class="lock-icon"><span class="heart-pulse">❤</span></div>
+            <h2>Yours, Truly.</h2>
+            <p>A small piece of my heart, for the one who holds the key.</p>
+            
+            <div class="input-group">
+                <input type="password" id="password-input" placeholder="Kelan anniversary naten?" autofocus>
+                <div id="togglePassword" class="toggle-eye">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <button class="unlock-btn" onclick="checkPassword()">OPEN GIFT</button>
+            <p id="error-msg" class="error-text">Sa kabet mo yan baliw...</p>
+        </div>
+    </div>
+
+    <div id="envelope-overlay" style="display: none;">
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="envelope" id="main-envelope">
+                <div class="heart-seal">❤</div>
+            </div>
+            <p class="click-me">Click to open your gift!</p>
+        </div>
+    </div>
+
+    <div id="main-content-wrapper" style="display: none;">
+        <header>
+            <div class="header-content">
+                <p class="recipient-name">To my forever favorite, Eunice</p>
+
+                <h1 class="shimmer-title">Happy Valentine's Day</h1>
+                <p id="intro-greet">to the most beautiful person ever</p>
+                <div class="scroll-container">
+                    <p class="scroll-text">Scroll down to see our best times together...</p>
+                    <div class="heart-icon pulse">❤</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="moment-container">
+            <div class="moment">
+                <div class="photo-frame"><img src="pic1.jpg" alt="Us"></div>
+                <div class="text-content">
+                    <h3>Where it started</h3>
+                    <p>Everything changed in an instant. Life suddenly felt much brighter the moment you came into mine.</p>
+                </div>
+            </div>
+
+            <div class="moment">
+                <div class="photo-frame"><img src="pic2.jpg" alt="Us"></div>
+                <div class="text-content">
+                    <h3>Shared Joy</h3>
+                    <p>Your laughter is my favorite sound in the whole world. Every time you smile, my heart skips a beat.</p>
+                </div>
+            </div>
+
+            <div class="moment">
+                <div class="photo-frame"><img src="pic3.jpg" alt="Us"></div>
+                <div class="text-content">
+                    <h3>Side By Side</h3>
+                    <p>It doesn't matter where we go or what we do — as long as I'm with you, every place feels like home.</p>
+                </div>
+            </div>
+
+            <div class="moment">
+                <div class="photo-frame"><img src="pic4.jpg" alt="Us"></div>
+                <div class="text-content">
+                    <h3>My Safe Place</h3>
+                    <p>When you hold me in your arms, everything feels right. You're my comfort, my peace, my everything.</p>
+                </div>
+            </div>
+
+            <div class="moment">
+                <div class="photo-frame"><img src="pic5.jpg" alt="Us"></div>
+                <div class="text-content">
+                    <h3>Always Yours</h3>
+                    <p>I loved you from the start, and every day I fall deeper. I'm so grateful I found you — and I want forever with you, Eunice.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="typing-container">
+            <p id="typing-text"></p>
+        </div>
+
+        <footer>
+            <p>You will always be my favorite person. <span class="heart-red">❤</span></p>
+            <p id="balikan">ps: balikan mo nako</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <audio id="bg-music" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Optional music toggle button (kung gusto mo may on/off sa page) -->
+<button id="music-toggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: rgba(158,0,28,0.7); color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer;">
+    🎵 On
+</button>
+</body>
+</html>
