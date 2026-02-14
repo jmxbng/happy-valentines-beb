@@ -1,23 +1,22 @@
 function checkPassword() {
-    const input = document.getElementById('password-input').value.trim().toLowerCase(); // trim at lowercase para hindi case-sensitive
+    const input = document.getElementById('password-input').value.trim().toLowerCase();
     const lock = document.getElementById('lock-screen');
     const envelope = document.getElementById('envelope-overlay');
     const errorMsg = document.getElementById('error-msg');
 
-    // Listahan ng tamang sagot (lahat lowercase)
+    // Listahan ng tamang sagot (lahat lowercase para hindi case-sensitive)
     const correctAnswers = ["oo", "pwede", "sige", "k", "ok", "g", "ge", "sige na nga"];
 
-    // Reset error state
+    // Reset error muna
     errorMsg.style.display = 'none';
 
-    // Check kung tama ang sagot
     if (correctAnswers.includes(input)) {
         lock.style.opacity = "0";
         setTimeout(() => {
             lock.style.display = 'none';
             envelope.style.display = 'flex';
 
-            // Optional: pwede ring i-start music dito kung gusto mo
+            // Optional: Kung gusto mo mag-start ang music pag unlock na (kagaya kay mama/papa)
             // const music = document.getElementById('bg-music');
             // if (music) {
             //     music.currentTime = 170;
@@ -29,10 +28,10 @@ function checkPassword() {
     }
 
     // Kung mali o blank
-    errorMsg.textContent = "mali sagot mo"; // pwede mong palitan 'to sa gusto mo, hal. "mali sagot bhe" o "hindi yan eh"
+    errorMsg.textContent = "maling sagot hmp!";
     errorMsg.style.display = 'block';
 
-    // Shake animation para sa error
+    // Shake animation
     const card = document.querySelector('.glass-card');
     card.style.animation = 'shake 0.4s';
     setTimeout(() => {
@@ -66,7 +65,7 @@ function openEnvelope() {
             // Start music pag binuksan na yung envelope
             const music = document.getElementById('bg-music');
             if (music) {
-                music.currentTime = 40; // binago mo na sa 40 seconds
+                music.currentTime = 170; // 2:50
                 music.volume = 0.25;
                 music.play().catch(e => console.log("Play error:", e));
             }
@@ -108,7 +107,7 @@ function typeWriter() {
     if (index < message.length) {
         document.getElementById("typing-text").innerHTML += message.charAt(index);
         index++;
-        setTimeout(typeWriter, 35);
+        setTimeout(typeWriter, 35); 
     }
 }
 
@@ -125,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = document.getElementById("typing-container");
     if (target) typingObserver.observe(target);
 
-    // Music toggle button (kung may button ka sa HTML na id="music-toggle")
+    // Music toggle button (kung may id="music-toggle" sa HTML)
     const toggleBtn = document.getElementById('music-toggle');
     if (toggleBtn) {
         toggleBtn.addEventListener('click', function() {
@@ -142,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Visibility change para mag-resume pag bumalik sa tab/page (mobile fix)
+    // Para mas stable ang music sa mobile (resume pag bumalik sa tab)
     document.addEventListener("visibilitychange", () => {
         const music = document.getElementById('bg-music');
         if (music) {
@@ -152,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Extra safety: Try resume pag scroll o touch (para hindi tumigil sa phone)
+    // Extra: Try resume pag scroll o touch
     window.addEventListener('scroll', () => {
         const music = document.getElementById('bg-music');
         if (music && music.paused && music.currentTime > 0) {
@@ -174,5 +173,3 @@ styleSheet.innerHTML = `@keyframes floatUp {
     100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }`;
 document.head.appendChild(styleSheet);
-
-
