@@ -29,7 +29,7 @@ function checkPassword() {
     }
 
     // Kung mali o blank
-    errorMsg.textContent = "wrong answer"; // pwede mong palitan 'to sa gusto mo, hal. "mali sagot bhe" o "hindi yan eh"
+    errorMsg.textContent = "mali sagot mo"; // pwede mong palitan 'to sa gusto mo, hal. "mali sagot bhe" o "hindi yan eh"
     errorMsg.style.display = 'block';
 
     // Shake animation para sa error
@@ -174,4 +174,5 @@ styleSheet.innerHTML = `@keyframes floatUp {
     100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }`;
 document.head.appendChild(styleSheet);
+
 
