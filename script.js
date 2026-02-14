@@ -1,51 +1,38 @@
 function checkPassword() {
-    const input = document.getElementById('password-input').value.trim();
+    const input = document.getElementById('password-input').value.trim().toLowerCase(); // trim at lowercase para hindi case-sensitive
     const lock = document.getElementById('lock-screen');
     const envelope = document.getElementById('envelope-overlay');
     const errorMsg = document.getElementById('error-msg');
 
-    const correctDate = "08/15/21";
-    const correctWord = "forever";
+    // Listahan ng tamang sagot (lahat lowercase)
+    const correctAnswers = ["oo", "pwede", "sige", "k", "ok", "g", "ge", "sige na nga"];
 
-    // Reset error state only (para sa wrong attempts)
+    // Reset error state
     errorMsg.style.display = 'none';
 
-    if (input === correctDate || input.toLowerCase() === correctWord) {
+    // Check kung tama ang sagot
+    if (correctAnswers.includes(input)) {
         lock.style.opacity = "0";
         setTimeout(() => {
             lock.style.display = 'none';
             envelope.style.display = 'flex';
+
+            // Optional: pwede ring i-start music dito kung gusto mo
+            // const music = document.getElementById('bg-music');
+            // if (music) {
+            //     music.currentTime = 170;
+            //     music.volume = 0.25;
+            //     music.play().catch(e => console.log("Error:", e));
+            // }
         }, 600);
         return;
     }
 
-    // Custom error messages with proper order
-    let errorText = "Sa kabet mo yan baliw...";
-
-    if (input === "") {
-        errorText = "sagutin mo muna to";
-    }
-    else if (/[a-zA-Z]/.test(input) && !/[0-9]/.test(input)) {
-        // puro letters lang (walang number)
-        errorText = "number ngaaaa";
-    }
-    else if (/[a-zA-Z]/.test(input) && /[0-9]/.test(input)) {
-        // may letters at numbers (mix)
-        errorText = "jusko be number nga lang";
-    }
-    else if (!input.includes("/")) {
-        // may number pero walang slash
-        errorText = "bobo lagyan mo ng backslash";
-    }
-    else if (/^[0-9/]+$/.test(input)) {
-        // may slash + puro number/slash → date format pero mali
-        errorText = "baliw sa kabet mo yan";
-    }
-
-    errorMsg.textContent = errorText;
+    // Kung mali o blank
+    errorMsg.textContent = "wrong answer"; // pwede mong palitan 'to sa gusto mo, hal. "mali sagot bhe" o "hindi yan eh"
     errorMsg.style.display = 'block';
 
-    // Shake animation para sa error lang
+    // Shake animation para sa error
     const card = document.querySelector('.glass-card');
     card.style.animation = 'shake 0.4s';
     setTimeout(() => {
@@ -187,3 +174,4 @@ styleSheet.innerHTML = `@keyframes floatUp {
     100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }`;
 document.head.appendChild(styleSheet);
+
