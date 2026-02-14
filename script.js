@@ -76,10 +76,10 @@ function openEnvelope() {
             content.style.display = "block";
             setInterval(createHeart, 400);
 
-            // Start music pag binuksan na yung envelope (kagaya kay mama/papa)
+            // Start music pag binuksan na yung envelope
             const music = document.getElementById('bg-music');
             if (music) {
-                music.currentTime = 40; // 2:50 = 170 seconds
+                music.currentTime = 40; // binago mo na sa 40 seconds
                 music.volume = 0.25;
                 music.play().catch(e => console.log("Play error:", e));
             }
@@ -121,7 +121,7 @@ function typeWriter() {
     if (index < message.length) {
         document.getElementById("typing-text").innerHTML += message.charAt(index);
         index++;
-        setTimeout(typeWriter, 35); 
+        setTimeout(typeWriter, 35);
     }
 }
 
